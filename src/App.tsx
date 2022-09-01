@@ -1,13 +1,32 @@
-import './App.css';
-import Navbar from './components/molecules/NavBar';
-import { Cards } from './components/atoms/cards';
-import Footer from './components/molecules/Footer';
+import React, {
+  createContext,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
+import "./App.css";
+import Main from "./components/pages/main";
+import { IContextProps, IResultProps } from "./interfaces/appInterface";
+
+const storage = JSON.parse(localStorage.getItem("product") as any);
+
+const DEFAULT_VALUE = storage || ([] as IResultProps[]);
+
+export const valueCartContext = createContext<IContextProps>(
+  {} as IContextProps
+);
 
 function App() {
+  const [textBySearch, setTextBySearch] = useState<string>('')
+  const [page, setPage] = useState<number>(1);
+  const [cart, setCart] = useState(DEFAULT_VALUE as IResultProps[]);
+
   return (
-    <div className="App">
-       
-    </div>
+    <valueCartContext.Provider value={{cart, setCart, textBySearch, setTextBySearch, page, setPage}}>
+      <div className="App">
+        <Main />
+      </div>
+    </valueCartContext.Provider>
   );
 }
 

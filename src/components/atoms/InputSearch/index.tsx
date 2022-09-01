@@ -1,13 +1,13 @@
-
+import { useContext } from 'react'
 import {ContainerInput} from './style'
+import {valueCartContext} from '../../../App'
 
-interface HeaderProps{
-    name?: string
-}
+export const InputSearch = () => {
 
-export const InputSearch: React.FC<HeaderProps> = ({name}) => {
+    const {textBySearch,setTextBySearch} = useContext(valueCartContext)
+
     return(
-        <ContainerInput placeholder={name}/>  
+        <ContainerInput placeholder={'Search in....'} onChange={(e) => setTextBySearch(e.target.value)}/>  
     )
 }
 

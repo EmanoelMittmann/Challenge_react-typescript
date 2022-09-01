@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerFooter = styled.div`
     width: 100%;
-    height: 100%vh;
+    height: 100%;
     background-color: gray;
     padding-top:10px;
 `

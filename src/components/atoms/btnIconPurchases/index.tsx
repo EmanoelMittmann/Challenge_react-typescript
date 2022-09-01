@@ -1,8 +1,10 @@
+import { IconModalProps } from "../../../interfaces/appInterface"
 import { Container } from "./style"
 
-export const BtnIconPurchases = () => {
+
+export const BtnIconPurchases = (Props: IconModalProps) => {
   return (
-    <Container>
+    <Container onClick={Props.handleClick}>
         <i className="bi bi-cart-dash"></i>
     </Container>
   )

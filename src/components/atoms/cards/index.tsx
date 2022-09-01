@@ -1,19 +1,15 @@
-import {ContainerCard, ImgCard} from './style'
+import { ContainerCard, ImgCard } from "./style";
+import { createContext, Dispatch, SetStateAction } from "react";
+import { CardsProps } from "../../../interfaces/appInterface";
 
-interface HeaderProps {
-    url:string,
-    price:number,
-    text:string
-}
+export const Cards = ({ url, price, text, dataForProduct, setProduct }: CardsProps) => 
+  
+    <ContainerCard>
+      <ImgCard src={url} />
+      <b>{text}</b>
+      <p>R$:{price}</p>
+      <button onClick={() => setProduct(dataForProduct)}>
+        <i>Add</i>
+      </button>
+    </ContainerCard>
 
-export const Cards:React.FC<HeaderProps> = ({url, price, text}) => {
-  return (
-    <>
-        <ContainerCard>
-            <ImgCard src={url}/>
-            <b>{text}</b>
-            <p>R$:{price},00</p>
-        </ContainerCard>
-    </>
-  )
-}
